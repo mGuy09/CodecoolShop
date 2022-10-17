@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -28,6 +29,13 @@ namespace Codecool.CodecoolShop.Controllers
         public IActionResult Index()
         {
             var products = ProductService.GetProductsForCategory(1);
+            return View(products.ToList());
+        }
+
+        [HttpGet("/Product/Categories/{id:int}")]
+        public IActionResult Categories(int id)
+        {
+            var products = ProductService.GetProductsForCategory(id);
             return View(products.ToList());
         }
 
