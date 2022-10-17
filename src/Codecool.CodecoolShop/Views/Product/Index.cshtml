@@ -6,15 +6,7 @@
 @model List<Codecool.CodecoolShop.Models.Product>
 
 <div class="container">
-    <div>
-        <p>Category</p>
-        <ul>
-           @foreach (var cat in categories)
-           {
-               <li><a asp-controller="Product" asp-action="Index" asp-route-id="@cat.Id">@cat.Name</a></li>
-           }
-        </ul>
-    </div>
+    
     <div>
         @foreach (var element in Model)
         {
