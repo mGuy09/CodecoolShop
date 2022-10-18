@@ -1,25 +1,39 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Categories";
     var categories = Codecool.CodecoolShop.Daos.Implementations.ProductCategoryDaoMemory.GetInstance().GetAll();
+    var suppliers = Codecool.CodecoolShop.Daos.Implementations.SupplierDaoMemory.GetInstance().GetAll();
 }
 
 <h1>Products</h1>
 
 @model List<Codecool.CodecoolShop.Models.Product>
 
-<div class="container">
-    <h4>Categories</h4>
-    <ul>
-        @foreach (var element in categories)
-        {
-            <li><a asp-area="" asp-controller="Product" asp-action="Categories" asp-route-id="@element.Id">@element.Name</a></li>
-        }
-    </ul>
-</div>
 
 <div class="container">
-    
+    <div>
+        <h4>Filters</h4>
+        <br />
+        <label>Suppliers:</label>
+        <br />
+        <select>
+            <option value="0">All suppliers</option>
+            @foreach (var element in suppliers)
+            {
+                <option value="@element.Id">@element.Name</option>
+            }
+        </select>
+        <br />
+        <label>Categories:</label>
+        <br />
+        <ul>
+            @foreach (var element in categories)
+            {
+                <li>
+                    <a asp-area="" asp-controller="Product" asp-action="Categories" asp-route-id="@element.Id">@element.Name</a>
+                </li>
+            }
+        </ul>
+    </div>
     @foreach (var element in Model)
     {
         <div class="col-lg-3 col-lg-3" style="display: inline-block; max-width: 350px; height: 350px">
@@ -38,7 +52,9 @@
                     <p class="card-text">@element.Description.</p>
                     <p class="card-text">Category: @element.ProductCategory.Department</p>
                     <p class="card-text">Supplier: @element.Supplier.Name</p>
-                    <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
+                    <p class="card-text text-center">
+                        <strong>Price: @element.DefaultPrice.ToString("C2")</strong>
+                    </p>
                     <a href="" type="button" class="btn btn-primary" style="float: bottom">Add To Cart</a>
                 </div>
             </div>
