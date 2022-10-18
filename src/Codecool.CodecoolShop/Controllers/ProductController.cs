@@ -18,7 +18,7 @@ namespace Codecool.CodecoolShop.Controllers
     {
         private readonly ILogger<ProductController> _logger;
         public ProductService ProductService { get; set; }
-
+        private Cart _cart = new Cart();
         public ProductController(ILogger<ProductController> logger)
         {
             _logger = logger;
@@ -45,12 +45,15 @@ namespace Codecool.CodecoolShop.Controllers
             return View();
         }
 
+        [HttpGet("/Product/Cart")]
+        public IActionResult Cart()
+        {
+            return View(_cart);
+        }
 
-        [Route("cart/add/{productId}")]
         public void AddToCart(Product product)
         {
-            Cart cart = new Cart();
-            cart.Add(product);
+            _cart.Add(product);
         }
 
 
