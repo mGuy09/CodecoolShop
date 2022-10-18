@@ -1,7 +1,7 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Categories";
     var categories = Codecool.CodecoolShop.Daos.Implementations.ProductCategoryDaoMemory.GetInstance().GetAll();
+    var suppliers = Codecool.CodecoolShop.Daos.Implementations.SupplierDaoMemory.GetInstance().GetAll();
 }
 
 <h1>Products</h1>
@@ -9,20 +9,35 @@
 @model List<Codecool.CodecoolShop.Models.Product>
 
 
-
 <div class="container">
     <div>
-        <h4>Categories</h4>
+        <h4>Filters</h4>
+        <br />
+        <label>Suppliers:</label>
+        <br />
+        <select id="supplier-filter" onchange="FilterSuppliers(this)">
+            <option value="0">All suppliers</option>
+            @foreach (var element in suppliers)
+            {
+                <option value="@element.Id" data-supplier-id="@element.Id">@element.Name</option>
+            }
+        </select>
+        <br />
+        <label>Categories:</label>
+        <br />
         <ul>
             @foreach (var element in categories)
             {
-                <li><a asp-area="" asp-controller="Product" asp-action="Categories" asp-route-id="@element.Id">@element.Name</a></li>
+                <li>
+                    <a asp-area="" asp-controller="Product" asp-action="Categories" asp-route-id="@element.Id">@element.Name</a>
+                </li>
             }
         </ul>
     </div>
+    <div id="products">
     @foreach (var element in Model)
     {
-        <div class="col-lg-3 col-lg-3" style="display: inline-block; max-width: 350px; height: 350px">
+        <div class="col-lg-3 col-lg-3" style="display: inline-block; max-width: 350px; height: 350px" data-supplier-id="@element.Supplier.Id">
             <div class="card">
                 <img src="/img/@(element.Name).jpg" style="height: 50%; width: 50%; align-self: center; padding-top: 10px">
 
@@ -38,12 +53,14 @@
                     <p class="card-text">@element.Description.</p>
                     <p class="card-text">Category: @element.ProductCategory.Department</p>
                     <p class="card-text">Supplier: @element.Supplier.Name</p>
-                    <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
-                    <a asp-area="" asp-controller="Product" asp-action="AddToCart" asp-route-id="@element.Id" href="" type="button" class="btn btn-primary" style="float: bottom">Add To Cart</a>
+                    <p class="card-text text-center">
+                        <strong>Price: @element.DefaultPrice.ToString("C2")</strong>
+                    </p>
+                    <a href="" type="button" class="btn btn-primary" style="float: bottom">Add To Cart</a>
                 </div>
             </div>
         </div>
     }
-
+    </div>
 
 </div>

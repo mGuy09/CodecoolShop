@@ -27,17 +27,17 @@
                             <span class="font-weight-bold">@element.Product.Name</span>
                         </div>
                         <div class="d-flex flex-row align-items-center qty">
-                            <a asp-controller="Product" asp-action="" asp-route-cartItemId="@element.Id"><i class="fa fa-minus text-danger"></i></a>
-                            <h5 class="text-grey mt-1 mr-1 ml-1">@element.Quantity</h5><a asp-controller="Product" asp-action="AddQuantity" asp-route-cartItemId="@element.Id"><i class="fa fa-plus text-success"></i></a>
+                            <a asp-controller="Product" asp-action="" asp-route-cartItemId="@element.Product.Id"><i class="fa fa-minus text-danger"></i></a>
+                            <h5 class="text-grey mt-1 mr-1 ml-1">@element.Quantity</h5><a asp-controller="Product" asp-action="" asp-route-cartItemId="@element.Product.Id"><i class="fa fa-plus text-success"></i></a>
                         </div>
                         <div>
                             <h5 class="text-grey">@((element.Product.DefaultPrice * element.Quantity) + element.Product.Currency)</h5>
                         </div>
-                        <div class="d-flex align-items-center"><a asp-controller="Product" asp-action="DeleteCartItem" asp-route-cartItemId="@element.Id"><i class="fa fa-trash mb-1 text-danger"></i></a></div>
+                        <div class="d-flex align-items-center"><a asp-controller="Product" asp-action="" asp-route-cartItemId="@element.Product.Id"><i class="fa fa-trash mb-1 text-danger"></i></a></div>
                     </div>
                 }
-                <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button" asp-controller="Order" asp-action="CompletingOrderData" asp-route-userId="@Model.Cart.UserId">Proceed to Pay!</button></div>
-                <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><button class="btn btn-primary btn-block btn-lg ml-2" type="button" asp-controller="Home" asp-action="Products">Continue shopping!</button></div>
+                <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button" asp-controller="" asp-action="" asp-route-userId="@Model.Cart.UserId">Proceed to Pay!</button></div>
+                <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><button class="btn btn-primary btn-block btn-lg ml-2" type="button" asp-controller="" asp-action="">Continue shopping!</button></div>
 
             </div>
         </div>
