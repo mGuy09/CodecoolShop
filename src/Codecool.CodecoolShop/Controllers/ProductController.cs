@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Codecool.CodecoolShop.Daos;
 using Codecool.CodecoolShop.Daos.Implementations;
@@ -43,6 +44,15 @@ namespace Codecool.CodecoolShop.Controllers
         {
             return View();
         }
+
+
+        [Route("cart/add/{productId}")]
+        public void AddToCart(Product product)
+        {
+            Cart cart = new Cart();
+            cart.Add(product);
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

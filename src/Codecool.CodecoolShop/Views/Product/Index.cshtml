@@ -5,7 +5,13 @@
 
 @model List<Codecool.CodecoolShop.Models.Product>
 
+<div class="cart">
+
+    <p>Cart</p>
+
+</div>
 <div class="container">
+    
     <div>
         <p>Category</p>
         <ul>
@@ -39,7 +45,16 @@
         </div>
         }
     </div>
-    
+    <div>
+        <div class="nav-item">
+            <a class="btn nav-link" id="cartBtn" data-bs-toggle="offcanvas" href="#offcanvasCart" role="button" aria-controls="offcanvasCart">
+                <i class="bi bi-cart" style="color: white;"></i>
+                <span style="color: white; cursor: pointer;">My Cart <span class="badge bg-warning" id="cart-quantity">0</span></span>
+            </a>
+
+        </div>
+
+    </div>
 
 
 </div>
