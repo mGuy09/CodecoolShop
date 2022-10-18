@@ -7,19 +7,19 @@ using Codecool.CodecoolShop.Daos.Implementations;
 
 namespace Codecool.CodecoolShop.Logic
 {
-    public class CartActions: IDisposable
-    {
-        public string CartId { get; set; }
-        private ProductDaoMemory productDao;
-        public const string CartSessionKey = "CartId";
+    //public class CartActions : IDisposable
+    //{
+    //    public string CartId { get; set; }
+    //    private ProductDaoMemory productDao;
+    //    public const string CartSessionKey = "CartId";
 
-        public void AddToCart(int id)
-        {
-            //get the item from the DB.
-            CartId = GetCartId();
-            var cartItem = productDao.GetBy(id);
-        }
+    //    public void AddToCart(int id)
+    //    {
+    //        //get the item from the DB.
+    //        CartId = GetCartId();
+    //        var cartItem = productDao.GetBy(id);
+    //    }
 
 
-    }
+    //}
 }
