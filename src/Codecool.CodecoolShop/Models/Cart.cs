@@ -38,7 +38,16 @@ namespace Codecool.CodecoolShop.Models
             else Products[product] = 1;
         }
 
+        public int SumCart()
+        {
+            int sum = 0;
+            foreach (var product in Products)
+            {
+                product.
+                
+            }
 
+        }
        
 
 
