@@ -15,11 +15,11 @@
         <br />
         <label>Suppliers:</label>
         <br />
-        <select>
+        <select id="supplier-filter" onchange="FilterSuppliers(this)">
             <option value="0">All suppliers</option>
             @foreach (var element in suppliers)
             {
-                <option value="@element.Id">@element.Name</option>
+                <option value="@element.Id" data-supplier-id="@element.Id">@element.Name</option>
             }
         </select>
         <br />
@@ -34,9 +34,10 @@
             }
         </ul>
     </div>
+    <div id="products">
     @foreach (var element in Model)
     {
-        <div class="col-lg-3 col-lg-3" style="display: inline-block; max-width: 350px; height: 350px">
+        <div class="col-lg-3 col-lg-3" style="display: inline-block; max-width: 350px; height: 350px" data-supplier-id="@element.Supplier.Id">
             <div class="card">
                 <img src="/img/@(element.Name).jpg" style="height: 50%; width: 50%; align-self: center; padding-top: 10px">
 
@@ -60,6 +61,6 @@
             </div>
         </div>
     }
-
+    </div>
 
 </div>
