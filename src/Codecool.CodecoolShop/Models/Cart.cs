@@ -5,9 +5,20 @@ namespace Codecool.CodecoolShop.Models
 {
     public class Cart
     {
-        public Dictionary<Product, int> Products { get; set; } = new Dictionary<Product, int>();
-        public int cartId { get; set; }
+        public Dictionary<Product, int> Products;
+        private Cart()
+        {
+            Products = new Dictionary<Product, int>();
+        }
+        private static Cart instance = null;
+        public static Cart Instance {
+            get {
+                if (instance is null) instance = new Cart();
 
+                return instance;
+            } }
+        
+        
         public void Add(Product product)
         {
             if (Products.Count >= 1)
@@ -26,6 +37,7 @@ namespace Codecool.CodecoolShop.Models
             }
             else Products[product] = 1;
         }
+
 
        
 

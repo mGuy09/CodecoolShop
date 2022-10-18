@@ -1,12 +1,13 @@
 ﻿
 @{
-    ViewData["Title"] = "Cart";}
-    Layout = "_Layout";
+    ViewData["Title"] = "Cart";
 }
+
+@model Dictionary<Codecool.CodecoolShop.Models.Product, int>
 
 <h2>Cart</h2>
 <div class="jumbotron">
-    @if (!Model.CartItems.Any())
+    @if (Model.Count == 0)
     {
         <p class="lead">Cart is empty!</p>
         <hr class="my-4">
@@ -19,24 +20,24 @@
         <div class="container mt-5 mb-5">
             <div class="d-flex justify-content-center row">
                 <div class="col-md-8">
-                @foreach (CartItem element in Model.CartItems)
+                @foreach (var product in Model)
                 {
                     <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
-                        <div class="mr-1"><img class="rounded" src="@Url.Content($"~/img/{element.Product.Name}.jpg")" style="height: 50%; width: 50%; align-self: center; padding-top: 10px;"></div>
+                        <div class="mr-1"><img class="rounded" src="@Url.Content($"~/img/{product.Key.Name}.jpg")" style="height: 50%; width: 50%; align-self: center; padding-top: 10px;"></div>
                         <div class="d-flex flex-column align-items-center product-details">
-                            <span class="font-weight-bold">@element.Product.Name</span>
+                            <span class="font-weight-bold">@product.Key.Name.</span>
                         </div>
                         <div class="d-flex flex-row align-items-center qty">
-                            <a asp-controller="Product" asp-action="" asp-route-cartItemId="@element.Product.Id"><i class="fa fa-minus text-danger"></i></a>
-                            <h5 class="text-grey mt-1 mr-1 ml-1">@element.Quantity</h5><a asp-controller="Product" asp-action="" asp-route-cartItemId="@element.Product.Id"><i class="fa fa-plus text-success"></i></a>
+                            <a asp-controller="Product" asp-action="" asp-route-cartItemId="@product.Key.Id"><i class="fa fa-minus text-danger"></i></a>
+                                <h5 class="text-grey mt-1 mr-1 ml-1">@product.Value</h5><a asp-controller="Product" asp-action="" asp-route-cartItemId="@product.Key.Id"><i class="fa fa-plus text-success"></i></a>
                         </div>
                         <div>
-                            <h5 class="text-grey">@((element.Product.DefaultPrice * element.Quantity) + element.Product.Currency)</h5>
+                            <h5 class="text-grey">@((product.Key.DefaultPrice * product.Value) + product.Key.Currency)</h5>
                         </div>
-                        <div class="d-flex align-items-center"><a asp-controller="Product" asp-action="" asp-route-cartItemId="@element.Product.Id"><i class="fa fa-trash mb-1 text-danger"></i></a></div>
+                            <div class="d-flex align-items-center"><a asp-controller="Product" asp-action="" asp-route-cartItemId="@product.Key.Id"><i class="fa fa-trash mb-1 text-danger"></i></a></div>
                     </div>
                 }
-                <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button" asp-controller="" asp-action="" asp-route-userId="@Model.Cart.UserId">Proceed to Pay!</button></div>
+                <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button" asp-controller="" asp-action="" asp-route-userId="">Proceed to Pay!</button></div>
                 <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><button class="btn btn-primary btn-block btn-lg ml-2" type="button" asp-controller="" asp-action="">Continue shopping!</button></div>
 
             </div>

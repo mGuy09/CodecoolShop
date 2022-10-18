@@ -1,16 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Codecool.CodecoolShop.Daos;
 using Codecool.CodecoolShop.Daos.Implementations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
+using Microsoft.AspNetCore.Mvc.Routing;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -18,7 +13,7 @@ namespace Codecool.CodecoolShop.Controllers
     {
         private readonly ILogger<ProductController> _logger;
         public ProductService ProductService { get; set; }
-        private Cart _cart = new Cart();
+        public Cart cart = Models.Cart.Instance;
         public ProductController(ILogger<ProductController> logger)
         {
             _logger = logger;
@@ -29,6 +24,7 @@ namespace Codecool.CodecoolShop.Controllers
 
         public IActionResult Index()
         {
+            
             return View(ProductService.GetAllProducts().ToList());
         }
 
@@ -47,12 +43,13 @@ namespace Codecool.CodecoolShop.Controllers
         [HttpGet("/Product/Cart")]
         public IActionResult Cart()
         {
-            return View(_cart);
+            return View(cart.Products);
         }
-
-        public void AddToCart(Product product)
+        [HttpGet("/Product/AddToCart")]
+        public IActionResult AddToCart(int id)
         {
-            _cart.Add(product);
+            cart.Add(ProductService.GetProductById(id));
+            return Redirect("/Product/Cart");
         }
 
 
