@@ -7,7 +7,7 @@ using Codecool.CodecoolShop.Daos.Implementations;
 
 namespace Codecool.CodecoolShop.Logic
 {
-    //public class CartActions : IDisposable
+    //public class CartActions
     //{
     //    public string CartId { get; set; }
     //    private ProductDaoMemory productDao;
