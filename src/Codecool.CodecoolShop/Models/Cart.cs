@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Codecool.CodecoolShop.Models
@@ -13,7 +14,7 @@ namespace Codecool.CodecoolShop.Models
         private static Cart instance = null;
         public static Cart Instance {
             get {
-                if (instance is null) instance = new Cart();
+                instance ??= new Cart();
 
                 return instance;
             } }
@@ -36,6 +37,20 @@ namespace Codecool.CodecoolShop.Models
                 if (!productExists) Products[product] = 1;
             }
             else Products[product] = 1;
+        }
+
+        public void Remove(Product product, int modifier)
+        {
+            switch (modifier)
+            {
+                case 0:
+                    if (Products[product] == 1) Products.Remove(product);
+                    else Products[product] -= 1;
+                    break;
+                case 1:
+                    Products.Remove(product);
+                    break;
+            }
         }
 
         public int SumCart()

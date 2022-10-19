@@ -30,5 +30,23 @@ namespace Codecool.CodecoolShop.Controllers
             cart.Add(ProductService.GetProductById(id));
             return Redirect("/Cart");
         }
+
+        public IActionResult IncreaseQuantity(int id)
+        {
+            cart.Add(ProductService.GetProductById(id));
+            return Redirect("/Cart");
+        }
+
+        public IActionResult DecreaseQuantity(int id)
+        {
+            cart.Remove(ProductService.GetProductById(id), 0);
+            return Redirect("/Cart");
+        }
+
+        public IActionResult RemoveItem(int id)
+        {
+            cart.Remove(ProductService.GetProductById(id), 1);
+            return Redirect("/Cart");
+        }
     }
 }

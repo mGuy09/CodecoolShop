@@ -26,26 +26,22 @@
                             <div class="d-flex flex-column align-items-center product-details">
                                 <span class="font-weight-bold">@product.Key.Name.</span>
                             </div>
-
                             <div>
-                                <h5 class="text-grey">@("Price:" + product.Key.DefaultPrice + product.Key.Currency)</h5>
-                                <br />
                                 <h5 class="text-grey">@(("Total:" + product.Key.DefaultPrice * product.Value) + product.Key.Currency)</h5>
                             </div>
-                            <br />
 
-                            <div class="d-flex align-items-center"><a asp-controller="Product" asp-action="" asp-route-cartItemId="@product.Key.Id">X</a></div>
+                            <div class="d-flex align-items-center"><a asp-controller="Cart" asp-action="RemoveItem" asp-route-id="@product.Key.Id">X</a></div>
                         </div>
                         <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
 
                             <div class="d-flex flex-row align-items-center qty">
-                                <a asp-controller="" asp-action="" asp-route-cartItemId="@product.Key.Id">-</a>
-                                <h5 class="text-grey mt-1 mr-1 ml-1">@product.Value</h5><a asp-controller="" asp-action="" asp-route-cartItemId="@product.Key.Id">+</a>
+                                <a asp-controller="Cart" asp-action="DecreaseQuantity" asp-route-id="@product.Key.Id">-</a>
+                                <h5 class="text-grey mt-1 mr-1 ml-1">@product.Value</h5><a asp-controller="Cart" asp-action="IncreaseQuantity" asp-route-id="@product.Key.Id">+</a>
                             </div>
                         </div>
                     }
-                    <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button" asp-controller="" asp-action="" asp-route-userId="">Proceed to Pay!</button></div>
-                    <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><a asp-controller="Product" asp-action="Categories" asp-route-id="1" style="float:inherit"><button class="btn btn-primary btn-block btn-lg ml-2" type="button">Continue shopping!</button></a></div>
+                    <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button" asp-controller="" asp-action="" asp-route-userId="">Proceed to Pay</button></div>
+                    <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><button class="btn btn-primary btn-block btn-lg ml-2" asp-controller="Product" asp-action="Categories" asp-route-id="1">Continue Shopping</button></div>
 
                 </div>
             </div>
