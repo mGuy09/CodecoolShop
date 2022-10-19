@@ -43,10 +43,10 @@ namespace Codecool.CodecoolShop.Models
             int sum = 0;
             foreach (var product in Products)
             {
-                product.
                 
-            }
 
+            }
+            return sum;
         }
        
 
