@@ -44,9 +44,8 @@ namespace Codecool.CodecoolShop.Models
             foreach (var product in Products)
             {
                 
-                
-            }
 
+            }
             return sum;
         }
        

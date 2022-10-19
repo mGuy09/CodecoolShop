@@ -40,17 +40,7 @@ namespace Codecool.CodecoolShop.Controllers
             return View();
         }
 
-        [HttpGet("/Product/Cart")]
-        public IActionResult Cart()
-        {
-            return View(cart.Products);
-        }
-        [HttpGet("/Product/AddToCart")]
-        public IActionResult AddToCart(int id)
-        {
-            cart.Add(ProductService.GetProductById(id));
-            return Redirect("/Product/Cart");
-        }
+        
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
