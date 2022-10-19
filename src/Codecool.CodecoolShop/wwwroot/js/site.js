@@ -4,6 +4,7 @@
 // Write your JavaScript code.
 const supplierId = document.querySelector("#supplier-filter");
 const productsDiv = document.querySelector("#products").children;
+const cartButton = document.querySelector("#cart");
 
 function FilterSuppliers(control) {
     console.log(productsDiv)
@@ -14,4 +15,7 @@ function FilterSuppliers(control) {
         }else
             productsDiv.item(i).hidden = false;
     }
+}
+function PreviewCart() {
+    cartButton.addEventListener("mouse-over", )
 }
