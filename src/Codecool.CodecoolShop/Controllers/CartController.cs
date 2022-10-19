@@ -1,6 +1,7 @@
 ﻿using Codecool.CodecoolShop.Daos.Implementations;
 using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -47,6 +48,11 @@ namespace Codecool.CodecoolShop.Controllers
         {
             cart.Remove(ProductService.GetProductById(id), 1);
             return Redirect("/Cart");
+        }
+        [Authorize]
+        public IActionResult Checkout()
+        {
+            return View("Checkout");
         }
     }
 }
