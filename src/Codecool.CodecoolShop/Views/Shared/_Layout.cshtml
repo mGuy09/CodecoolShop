@@ -1,5 +1,5 @@
 ﻿@{
-    var cart = Codecool.CodecoolShop.Models.Cart.Instance.Products;
+    var cart = Codecool.CodecoolShop.Models.Cart.GetInstance().Products;
 
 
 }
@@ -37,7 +37,7 @@
                         <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Privacy">Privacy</a>
                     </li>
                     <li class="nav-item">
-                        <a data-toggle="modal" data-target="#myModal" id="cart" class="nav-link text-dark float-left">Cart</a>
+                        <a asp-area="" data-toggle="modal" data-target="#myModal" id="cart" class="nav-link text-dark float-left">Cart</a>
                     </li>
                     <!-- Modal -->
                     <div id="myModal" class="modal fade" role="dialog">
@@ -52,7 +52,7 @@
 
                                 </div>
                                 <div class="modal-body">
-                                        @if (cart.Count ==0)
+                                        @if (cart.Count == 0)
                                             {
                                                 <h5>The cart is empty</h5>
                                             }

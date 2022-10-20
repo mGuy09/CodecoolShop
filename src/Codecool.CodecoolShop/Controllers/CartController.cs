@@ -12,7 +12,7 @@ namespace Codecool.CodecoolShop.Controllers
     {
         private readonly ILogger<ProductController> _logger;
         public ProductService ProductService { get; set; }
-        public Cart cart = Models.Cart.Instance;
+        public Cart cart = Models.Cart.GetInstance();
         public CartController(ILogger<ProductController> logger)
         {
             _logger = logger;
@@ -27,10 +27,10 @@ namespace Codecool.CodecoolShop.Controllers
             return View(cart.Products);
         }
         [HttpGet("/Cart/AddToCart")]
-        public IActionResult AddToCart(int id)
+        public IActionResult AddToCart(int id, int category)
         {
             cart.Add(ProductService.GetProductById(id));
-            return Redirect("/Cart");
+            return Redirect($"/Product/Categories/{category}");
         }
 
         public IActionResult IncreaseQuantity(int id)

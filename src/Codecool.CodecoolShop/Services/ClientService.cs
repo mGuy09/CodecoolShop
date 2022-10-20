@@ -1,5 +1,6 @@
 ﻿using Codecool.CodecoolShop.Daos;
 using Codecool.CodecoolShop.Models;
+using System;
 
 namespace Codecool.CodecoolShop.Services;
 
@@ -13,8 +14,8 @@ public class ClientService
         this.clientDao = clientDao;
         
     }
-    public Client GetClientById(int id)
+    public Client GetClientById(Guid id)
     {
-        return clientDao.Get(id);
+        throw new NotImplementedException();
     }
 }

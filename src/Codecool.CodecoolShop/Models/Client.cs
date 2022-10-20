@@ -6,7 +6,7 @@ namespace Codecool.CodecoolShop.Models;
 
 public class Client: BaseModel
 {
-    //public Guid Id { get; set; }
+    public Guid Id { get; set; }
     public string Name { get; set; }
     public string Address { get; set; }
     public string PhoneNumber { get; set; }
@@ -17,14 +17,12 @@ public class Client: BaseModel
         ClientsInfo = new Dictionary<string, string>();
     }
     private static Client instance = null;
-    public static Client Instance
+    public static Client GetInstance()
     {
-        get
-        {
-            instance ??= new Client();
+        instance ??= new Client();
 
-            return instance;
-        }
+        return instance;
+        
     }
 
 }

@@ -3,6 +3,7 @@ using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -10,13 +11,13 @@ namespace Codecool.CodecoolShop.Controllers
     {
         private readonly ILogger<OrderController> _logger;
         public OrderService OrderService { get; set; }
-        public Cart cart = Models.Cart.Instance;
-        public Client client = Models.Client.Instance;
+        public static Cart cart = Models.Cart.GetInstance();
+        public static Client client = Models.Client.GetInstance();
+        public Order order = new(client, cart);
         public OrderController(ILogger<OrderController> logger)
         {
             _logger = logger;
-            OrderService = new OrderService(
-                OrderDaoMemory.GetInstance();
+            OrderService = new OrderService(OrderDaoMemory.GetInstance());
         }
         public IActionResult Index()
         {
@@ -24,7 +25,7 @@ namespace Codecool.CodecoolShop.Controllers
         }
         public IActionResult OrderRegistered(int id)
         {
-            order.Add(ProductService.GetProductById(id));
-            return Redirect("/Cart");
+            throw new NotImplementedException();
         }
     }
+}

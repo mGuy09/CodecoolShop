@@ -14,7 +14,7 @@ namespace Codecool.CodecoolShop.Controllers
     {
         private readonly ILogger<ProductController> _logger;
         public ProductService ProductService { get; set; }
-        public Cart cart = Models.Cart.Instance;
+        public Cart cart = Models.Cart.GetInstance();
         public ProductController(ILogger<ProductController> logger)
         {
             _logger = logger;
