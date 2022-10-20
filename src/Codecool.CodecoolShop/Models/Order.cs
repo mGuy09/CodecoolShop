@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System;
+using System.ComponentModel;
 
 namespace Codecool.CodecoolShop.Models;
 
@@ -15,4 +16,5 @@ public class Order: BaseModel
         Client = client;
         Cart = cart;
     }
+    
 }

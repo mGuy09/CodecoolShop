@@ -5,6 +5,7 @@
 const supplierId = document.querySelector("#supplier-filter");
 const productsDiv = document.querySelector("#products").children;
 const cartButton = document.querySelector("#cart");
+const addToCart = document.querySelectorAll(".add-to-cart")
 
 function FilterSuppliers(control) {
     console.log(productsDiv)
@@ -28,3 +29,11 @@ $('#cart').on('show.bs.modal', function (event) {
     modal.find('.modal-title').text('New message to ' + recipient)
     modal.find('.modal-body input').val(recipient)
 })
+
+addToCart.forEach((element) => {
+    element.addEventListener("click",(e)=> {
+        
+    })
+})
+
+

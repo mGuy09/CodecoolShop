@@ -7,6 +7,7 @@ using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Routing;
+using NuGet.Protocol;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -14,7 +15,7 @@ namespace Codecool.CodecoolShop.Controllers
     {
         private readonly ILogger<ProductController> _logger;
         public ProductService ProductService { get; set; }
-        public Cart cart = Models.Cart.Instance;
+        public Cart cart = Cart.GetInstance();
         public ProductController(ILogger<ProductController> logger)
         {
             _logger = logger;
@@ -34,6 +35,11 @@ namespace Codecool.CodecoolShop.Controllers
         {
             var products = ProductService.GetProductsForCategory(id);
             return View(products.ToList());
+        }
+        [HttpGet("/Product/Cart-Contents")]
+        public string GetCartContents()
+        {
+            return cart.Products.ToJson();
         }
 
         public IActionResult Privacy()

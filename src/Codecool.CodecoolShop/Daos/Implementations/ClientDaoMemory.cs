@@ -10,12 +10,12 @@ public class ClientDaoMemory: IClientDao
     private static ClientDaoMemory instance = null;
     public Client Get(int id)
     {
-        throw new System.NotImplementedException();
+        throw new NotImplementedException();
     }
 
     public IEnumerable<Client> Get(Client client)
     {
-        throw new System.NotImplementedException();
+        throw new NotImplementedException();
     }
     public static ClientDaoMemory GetInstance()
     {

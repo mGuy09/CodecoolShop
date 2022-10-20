@@ -1,6 +1,7 @@
 ﻿using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -20,8 +21,13 @@ namespace Codecool.CodecoolShop.Controllers
         [HttpGet("/Checkout/Order")]
         public IActionResult AddInfoForm(Checkout checkout)
         {
-            Order.Add(ProductService.GetProductById(id));
-            return Redirect("/Cart");
+            throw new NotImplementedException();
+        }
+
+        [HttpGet("/Checkout/Confirmation")]
+        public IActionResult PaymentConfirmation()
+        {
+            return View();
         }
     }
 }

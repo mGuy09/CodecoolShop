@@ -12,12 +12,11 @@ namespace Codecool.CodecoolShop.Models
             Products = new Dictionary<Product, int>();
         }
         private static Cart instance = null;
-        public static Cart Instance {
-            get {
-                instance ??= new Cart();
-
-                return instance;
-            } }
+        public static Cart GetInstance() 
+        {
+            instance ??= new Cart();
+            return instance;
+        }
         
         
         public void Add(Product product)
