@@ -1,4 +1,5 @@
 ﻿using Codecool.CodecoolShop.Models;
+using Codecool.CodecoolShop.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Codecool.CodecoolShop.Controllers
@@ -10,10 +11,10 @@ namespace Codecool.CodecoolShop.Controllers
             return View();
         }
 
-        [HttpPost]
+       
         public IActionResult InfoForm()
         {
-            return View(Checkout().Products);
+            return Redirect("/Checkout");
         }
     }
 }
