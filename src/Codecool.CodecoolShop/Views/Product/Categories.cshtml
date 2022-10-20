@@ -49,7 +49,7 @@
                     <p class="card-text text-center">
                         <strong>Price: @element.DefaultPrice.ToString("C2")</strong>
                     </p>
-                    <a asp-area="" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@element.Id" asp-route-category="@element.ProductCategory.Id" type="button" class="btn btn-primary" style="float: bottom">Add To Cart</a>
+                    <a asp-area="" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@element.Id" asp-route-category="@element.ProductCategory.Id" type="button" class="btn btn-primary add-to-cart" style="float: bottom">Add To Cart</a>
                 </div>
             </div>
         </div>

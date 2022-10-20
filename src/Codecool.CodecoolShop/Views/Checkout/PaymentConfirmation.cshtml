@@ -1,0 +1,44 @@
+﻿@{
+	ViewData["title"] = "Payment Confirmation";
+	var cart = Codecool.CodecoolShop.Models.Cart.GetInstance().Products;
+	decimal total = 0;
+	var currency = "";
+}
+<h1 class="lead">Payment Complete</h1>
+<div class="jumbotron">
+        <div class="container mt-5 mb-5">
+            <div class="d-flex justify-content-center row">
+                <div class="col-md-8">
+                    @foreach (var product in cart)
+                    {
+                        
+                        <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
+                            <div class="mr-1"><img class="rounded" src="@Url.Content($"~/img/{product.Key.Name}.jpg")" style="height: 50%; width: 50%; align-self: center; padding-top: 10px;"></div>
+                            <div class="d-flex flex-column align-items-center product-details">
+                                <span class="font-weight-bold">@product.Key.Name.</span>
+                            </div>
+                            <div>
+                                <h5 class="text-grey">@(("Total:" + product.Key.DefaultPrice * product.Value) + product.Key.Currency)</h5>
+                            </div>
+                            <div hidden>
+                                @{
+                                    total += product.Key.DefaultPrice * product.Value;
+                                    currency = product.Key.Currency;
+                                }
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
+
+                            <div class="d-flex flex-row align-items-center qty">
+                                
+                                <h5 class="text-grey mt-1 mr-1 ml-1">Quantity: @product.Value</h5>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div>
+</div>
+<br />
+<h5 class="text-grey mt-1 mr-1 ml-1">Total Paid: @(total + " " + currency)</h5>

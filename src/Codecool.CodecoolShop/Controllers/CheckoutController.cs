@@ -23,5 +23,11 @@ namespace Codecool.CodecoolShop.Controllers
         {
             throw new NotImplementedException();
         }
+
+        [HttpGet("/Checkout/Confirmation")]
+        public IActionResult PaymentConfirmation()
+        {
+            return View();
+        }
     }
 }

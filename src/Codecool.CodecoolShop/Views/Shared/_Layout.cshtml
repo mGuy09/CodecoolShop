@@ -37,8 +37,14 @@
                         <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Privacy">Privacy</a>
                     </li>
                     <li class="nav-item">
-                        <a asp-area="" data-toggle="modal" data-target="#myModal" id="cart" class="nav-link text-dark float-left">Cart</a>
-                    </li>
+                            <a asp-area="" data-toggle="modal" data-target="#myModal" id="cart" class="nav-link text-dark float-left">Cart <span class="span btn-primary mt-2 px-1 rounded">@{
+                                        int sum = 0;
+                                        foreach(var element in cart){
+                                            sum += element.Value;
+                                        }
+                                        
+                                }@sum</span> </a>
+						</li>
                     <!-- Modal -->
                     <div id="myModal" class="modal fade" role="dialog">
                         <div class="modal-dialog">
@@ -75,10 +81,10 @@
                                         
                                 </div>
                                 <div class="modal-footer">
-                                        <a asp-area="" asp-controller="Checkout" asp-action="Checkout" class="btn btn-secondary">Checkout</a>
-                                    <a asp-controller="Cart" asp-action="" class="btn btn-secondary">View shopping cart</a>
+                                        @*<a asp-area="" asp-controller="Checkout" asp-action="Checkout" class="btn btn-secondary">Checkout</a>*@
+                                    <a asp-controller="Cart" asp-action="" class="btn btn-primary">View shopping cart</a>
                                     <hr>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
 
@@ -106,7 +112,7 @@
 </footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/site.js" asp-append-version="true" defer="true"></script>
 @RenderSection("Scripts", required: false)
 </body>
 </div>
