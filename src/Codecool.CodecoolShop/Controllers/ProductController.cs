@@ -33,8 +33,15 @@ namespace Codecool.CodecoolShop.Controllers
         [HttpGet("/Product/Categories/{id:int}")]
         public IActionResult Categories(int id)
         {
-            var products = ProductService.GetProductsForCategory(id);
-            return View(products.ToList());
+            if (id != 0)
+            {
+                var products = ProductService.GetProductsForCategory(id);
+                return View(products.ToList());
+            }
+            else
+            {
+                return View(ProductService.GetAllProducts().ToList());
+            }
         }
         [HttpGet("/Product/Cart-Contents")]
         public string GetCartContents()
