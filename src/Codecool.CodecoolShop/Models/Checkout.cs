@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Codecool.CodecoolShop.Models
 {
-    public class Checkout
+    public class Checkout: BaseModel
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

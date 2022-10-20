@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Codecool.CodecoolShop.Models
 {
     [Serializable]
-    public class CartItem
+    public class CartItem: BaseModel
     {
         
         public int Quantity { get; set; }

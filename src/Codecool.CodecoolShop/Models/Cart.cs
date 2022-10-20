@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Codecool.CodecoolShop.Models
 {
-    public class Cart
+    public class Cart: BaseModel
     {
         public Dictionary<Product, int> Products;
         private Cart()

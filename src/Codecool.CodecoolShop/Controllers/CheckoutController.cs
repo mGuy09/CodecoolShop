@@ -16,5 +16,12 @@ namespace Codecool.CodecoolShop.Controllers
         {
             return Redirect("/Checkout");
         }
+
+        [HttpGet("/Checkout/Order")]
+        public IActionResult AddInfoForm(Checkout checkout)
+        {
+            Order.Add(ProductService.GetProductById(id));
+            return Redirect("/Cart");
+        }
     }
 }
