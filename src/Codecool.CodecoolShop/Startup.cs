@@ -69,13 +69,13 @@ namespace Codecool.CodecoolShop
             supplierDataStore.Add(amazon);
             Supplier lenovo = new Supplier{Name = "Lenovo", Description = "Computers"};
             supplierDataStore.Add(lenovo);
-            ProductCategory tablet = new ProductCategory {Name = "Tablet", Department = "Hardware", Description = "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display." };
-            ProductCategory phone = new ProductCategory {Name = "Phone", Department = "Hardware", Description = "Phone" };
-            productCategoryDataStore.Add(tablet);
-            productCategoryDataStore.Add(phone);
-            productDataStore.Add(new Product { Name = "mushroom2", DefaultPrice = 49.9m, Currency = "USD", Description = "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", ProductCategory = tablet, Supplier = amazon });
-            productDataStore.Add(new Product { Name = "magic-mushroom", DefaultPrice = 479.0m, Currency = "USD", Description = "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", ProductCategory = tablet, Supplier = lenovo });
-            productDataStore.Add(new Product { Name = "white-mushroom", DefaultPrice = 89.0m, Currency = "USD", Description = "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", ProductCategory = phone, Supplier = amazon });
+            ProductCategory poison = new ProductCategory {Name = "poison", Department = "Hardware", Description = "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display." };
+            ProductCategory magic = new ProductCategory {Name = "magic", Department = "Hardware", Description = "Phone" };
+            productCategoryDataStore.Add(poison);
+            productCategoryDataStore.Add(magic);
+            productDataStore.Add(new Product { Name = "mushroom2", DefaultPrice = 49.9m, Currency = "USD", Description = "The easiest way to kill someone", ProductCategory = poison, Supplier = amazon });
+            productDataStore.Add(new Product { Name = "magic-mushroom", DefaultPrice = 479.0m, Currency = "USD", Description = "These mushrooms will make you see unseen worlds.", ProductCategory = poison, Supplier = lenovo });
+            productDataStore.Add(new Product { Name = "white-mushroom", DefaultPrice = 89.0m, Currency = "USD", Description = "Try one of these if you want to feel like flying. ", ProductCategory = magic, Supplier = amazon });
 
         }
     }
