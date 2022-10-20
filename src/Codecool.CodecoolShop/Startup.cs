@@ -65,16 +65,16 @@ namespace Codecool.CodecoolShop
             IProductCategoryDao productCategoryDataStore = ProductCategoryDaoMemory.GetInstance();
             ISupplierDao supplierDataStore = SupplierDaoMemory.GetInstance();
 
-            Supplier amazon = new Supplier{Name = "Amazon", Description = "Digital content and services"};
+            Supplier amazon = new Supplier{Name = "Amazon", Description = "New supplier of plants and fungi"};
             supplierDataStore.Add(amazon);
-            Supplier lenovo = new Supplier{Name = "Lenovo", Description = "Computers"};
+            Supplier lenovo = new Supplier{Name = "Lenovo", Description = "New merchandise from a hardware company"};
             supplierDataStore.Add(lenovo);
-            ProductCategory poison = new ProductCategory {Name = "poison", Department = "Hardware", Description = "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display." };
-            ProductCategory magic = new ProductCategory {Name = "magic", Department = "Hardware", Description = "Phone" };
+            ProductCategory poison = new ProductCategory {Name = "poison", Department = "Fungi and Moss", Description = "Is any member of the group of eukaryotic organisms that includes microorganisms such as yeasts and molds, as well as the more familiar mushrooms." };
+            ProductCategory magic = new ProductCategory {Name = "magic", Department = "Magic Mush", Description = "Mushrooms" };
             productCategoryDataStore.Add(poison);
             productCategoryDataStore.Add(magic);
             productDataStore.Add(new Product { Name = "mushroom2", DefaultPrice = 49.9m, Currency = "USD", Description = "The easiest way to kill someone", ProductCategory = poison, Supplier = amazon });
-            productDataStore.Add(new Product { Name = "magic-mushroom", DefaultPrice = 479.0m, Currency = "USD", Description = "These mushrooms will make you see unseen worlds.", ProductCategory = poison, Supplier = lenovo });
+            productDataStore.Add(new Product { Name = "magic-mushroom", DefaultPrice = 479.0m, Currency = "USD", Description = "These mushrooms will make you see unseen worlds.", ProductCategory = magic, Supplier = lenovo });
             productDataStore.Add(new Product { Name = "white-mushroom", DefaultPrice = 89.0m, Currency = "USD", Description = "Try one of these if you want to feel like flying. ", ProductCategory = magic, Supplier = amazon });
 
         }
