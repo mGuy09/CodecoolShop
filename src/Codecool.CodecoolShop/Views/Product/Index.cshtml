@@ -5,10 +5,10 @@
 
 @model List<Codecool.CodecoolShop.Models.Product>
 
-<div class="container">
+<div class="container flex flex-column">
    
-    <div class="container1">
-        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="container">
+        <div id="carouselExampleSlidesOnly" class="carousel" data-ride="carousel">
             <div class="carousel-inner" style="height: 50%; width: 100%; align-self: center">
                 <div class="carousel-item active">
                     <img class="d-block w-100" img src="@Url.Content($"~/img/mushroom2.jpg")" alt="First slide">
@@ -21,16 +21,18 @@
                 </div>
             </div>
         </div>
-    </div>
-    <br/>
-    <hr/>
-    <div class="container2">
-        <div>
-            <h3>Our Mission</h3>
-            <p> We made it our mission to bring to the public the knowledge of what kind of plants and mushrooms are good for consuming and which could be the effects for each of them.</p>
-            <p>We also have the option that people that like collecting these plants and fungi be able to buy them and grow them on.</p>
+        <br />
+        <div class="container mb-5 mt-5 p-0" style="position: absolute; left: 10%; top: 50%; width: 90%;">
+            <div>
+                <h3>Our Mission</h3>
+                <p> We made it our mission to bring to the public the knowledge of what kind of plants and mushrooms are good for consuming and which could be the effects for each of them.</p>
+                <p>We also have the option that people that like collecting these plants and fungi be able to buy them and grow them on.</p>
+            </div>
         </div>
     </div>
+    <br/>
+    <br/>
+    
     
     @*<div>
 
@@ -57,9 +59,11 @@
             </div>
         }
     </div>*@
+
     
 
 
 </div>
+
 
 
